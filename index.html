@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script src="processing.js"></script>
+<script type="text/javascript">
+  function resizeCanvas() {
+    if (window.innerWidth / 0.8 <= window.innerHeight) {
+      Processing.getInstanceById("canvas").size(window.innerWidth, window.innerWidth / 0.8);
+      Processing.getInstanceById("canvas").scale(window.innerWidth / 1024, window.innerWidth / 0.8 / 1280);
+      document.body.style.paddingTop = (window.innerHeight - window.innerWidth / 0.8) / 2 + "px";
+    } else {
+      Processing.getInstanceById("canvas").size(window.innerHeight * 0.8, window.innerHeight);
+      Processing.getInstanceById("canvas").scale(window.innerHeight * 0.8 / 1024, window.innerHeight / 1280);
+      document.body.style.paddingLeft = (window.innerWidth - window.innerHeight * 0.8) / 2 + "px";
+    }
+  }
+</script>
+</head>
+<body onload="setTimeout(function(){ resizeCanvas(); }, 100);" onresize="resizeCanvas();" style="margin: 0; padding: 0; overflow: hidden; background-color: #000;">
+  <canvas id="canvas" data-processing-sources="almostBejeweled.pde"></canvas>
+</body>
+</html>
